@@ -16,20 +16,38 @@ public class JugadoresController {
         this.jugadoresService = jugadoresService;
     }
     @GetMapping("/getAll")
-    public List<Jugadores> getAllJugadores() {return jugadoresService.getAllJugadores();}
+    public List<Jugadores> getAllJugadores() {
+        if(getAllJugadores() == null){
+            return null;
+        }
+        return jugadoresService.getAllJugadores();
+    }
 
     @GetMapping("/get/{id}")
-    public Jugadores getJugadoresById(@PathVariable Integer id){return jugadoresService.getJugadoresById(id);}
+    public Jugadores getJugadoresById(@PathVariable Integer id){
+        if(getJugadoresById(id) == null){
+            return null;
+        }
+        return jugadoresService.getJugadoresById(id);
+    }
 
     @PostMapping("/create")
-    public Jugadores createJugadores(@RequestBody Jugadores jugadores){return jugadoresService.createJugadores(jugadores);}
+    public Jugadores createJugadores(@RequestBody Jugadores jugadores){
+        if(createJugadores(jugadores) == null){
+            return null;
+        }
+        return jugadoresService.createJugadores(jugadores);
+    }
 
     @PutMapping("/update")
     public Jugadores updateJugadores(@RequestBody Jugadores jugadores){
+        if(updateJugadores(jugadores) == null){
+            return null;
+        }
         return jugadoresService.updateJugadores(jugadores);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteJugadoresById(@PathVariable Integer id) {jugadoresService.deleteJugadoresById(id);}
-
-
+    public void deleteJugadoresById(@PathVariable Integer id) {
+        jugadoresService.deleteJugadoresById(id);
+    }
 }
